@@ -1,0 +1,35 @@
+:root{
+  --light-blue:#4ef09d;
+  --darker-blue: #4ef09d;
+  --dark-blue:#012912;
+  --size: 10rem;
+  --blur: 200px;
+  --blur-size: 15rem;
+  --glow-color: transparent;
+  --font:  sans-serif, 'Montserrat';
+
+}
+*{
+  font-family: sans-serif, 'Poppins';
+  margin: 0px;
+}
+
+body {
+
+  color: white;
+  background-color: #000811;
+}
+
+@media (max-width: 765px) {
+
+  :root{
+    --size: 5rem
+  }
+}
+
+@media (max-width: 400px) {
+
+  :root{
+    --size: 1rem
+  }
+}

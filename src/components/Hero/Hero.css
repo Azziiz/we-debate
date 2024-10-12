@@ -1,0 +1,164 @@
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 4rem;
+    min-height: 500px;
+}
+
+.join {
+    padding: 15px 15px;
+
+    text-decoration: none;
+    font-size:  1rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    text-transform: uppercase;
+
+    transition: all 0.3s ease;
+    width: 120px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 1px solid var(--light-blue);
+    color: var(--light-blue);
+  }
+
+  .join:hover {
+    border: 1px solid transparent;
+    background-color: var(--light-blue);
+    color: #ffff;
+  }
+
+.hero-container::after,
+.hero-container::before{
+    content: " ";
+    width: calc(var(--blur-size) + 10rem) ;
+    height: calc(var(--blur-size) + 10rem );
+    border-radius: var(--blur-size);
+    background-color: var(--glow-color);
+    position: absolute;
+    z-index: -1;
+    filter: blur(var(--blur));
+}
+
+
+.hero-container::after{
+    background-color: var(--glow-color);
+    top: -3rem;
+    left: -5rem;
+}
+
+.hero-container::before{
+    bottom: -2rem;
+    right: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 65rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.hero-content h2{
+    font-size: 3.8rem;
+    font-weight: 600;
+    line-height: 5rem;
+    margin-bottom: 1rem;
+    font-family:sans-serif, 'Montserrat';
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.hero-content h2 span{
+    background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-9&color=4ef09d);
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.hero-content p {
+    width: 80%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2rem;
+    text-align: center;
+}
+
+
+
+@media (max-width: 1025px) {
+    .hero-container h2 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .hero-container p {
+        font-size: 0.9rem;
+        line-height: 1.6rem;
+    } 
+
+    .hero-img img{
+        width: 350px;
+    }
+}
+
+
+@media (max-width: 765px) {
+    .hero-container{
+        flex-direction: column;
+
+    }
+
+
+
+
+    .hero-container h2 {
+        margin-top: 3rem;
+    }
+
+    .hero-content h2,
+    .hero-content p {
+        width: auto;
+        text-align: center;
+    }
+
+    .hero-container::after,
+    .hero-container::before{
+
+        width: 18rem;
+        height: 18rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .hero-content h2 {
+
+        font-size: 2.2rem;
+        line-height: 3rem;
+        margin-top: 0;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+
+    .hero-container::after,
+    .hero-container::before{
+
+        width: 12rem;
+        height: 12rem;
+    }
+}

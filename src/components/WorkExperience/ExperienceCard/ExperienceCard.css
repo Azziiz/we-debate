@@ -1,0 +1,61 @@
+.work-experience-card{
+    background-color:  transparent;
+    border-radius: 0.65rem;
+    border: 1.5px solid var(--light-blue);
+    padding: 1.5rem;
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    height: 120px;
+    position: relative;
+}
+
+.work-experience-card h6 {
+    background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-9&color=4ef09d);
+    padding: 0.3rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-family: var(--font);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.work-experience-card h3 {
+    
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--font);
+    text-align: center;
+}
+
+.work-experience-card img {
+    position: absolute;
+    width: 30px;
+    padding: 0.5rem;
+    top: 0;
+}
+
+
+@media (max-width: 900px) {
+    .work-experience-card{
+        margin: 0 1rem;
+    }
+
+    .work-experience-card h6{
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .work-experience-card h6{
+        font-size: 0.95rem;
+    }
+
+    .work-experience-card{
+        margin: 0 ;
+    }
+}

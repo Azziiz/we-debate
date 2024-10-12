@@ -1,0 +1,7 @@
+.footer{
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: transparent;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+}
