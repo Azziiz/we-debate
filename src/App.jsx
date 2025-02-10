@@ -7,6 +7,7 @@ import WorkExperience from './components/WorkExperience/WorkExperience'
 import ContactMe from './components/ContactMe/ContactMe'
 import Footer from './components/Footer/Footer'
 import Achievements from './components/Achievements/Achievements'
+import TheCircle from './components/TheCircle/TheCircle'
 
 
 function App() {

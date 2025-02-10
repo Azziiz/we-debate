@@ -5,13 +5,14 @@
     position: relative;
     margin-bottom: 4rem;
     min-height: 500px;
+
 }
 
 .join {
     padding: 15px 15px;
 
     text-decoration: none;
-    font-size:  1rem;
+    font-size:  0.95rem;
     font-weight: 500;
 
     cursor: pointer;
@@ -20,7 +21,7 @@
     text-transform: uppercase;
 
     transition: all 0.3s ease;
-    width: 120px;
+    width: 150px;
     margin-top: 20px;
     background-color: transparent;
     border: 1px solid var(--light-blue);

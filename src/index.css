@@ -1,6 +1,7 @@
 :root{
   --light-blue:#4ef09d;
   --darker-blue: #4ef09d;
+  --tr-blue:#0129126b;
   --dark-blue:#012912;
   --size: 10rem;
   --blur: 200px;
@@ -17,7 +18,8 @@
 body {
 
   color: white;
-  background-color: #000811;
+  background: url('/public/poster.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 @media (max-width: 765px) {

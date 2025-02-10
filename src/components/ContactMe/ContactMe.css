@@ -1,135 +1,146 @@
-.contact-container{
+/* Base Contact Form Styles */
+.contact-container {
     margin: 4rem;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    min-height: 400px;
-}
-
-.contact-content {
-    flex: 1;
-    max-width: 65rem;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    justify-content: center;
+    min-height: 400px;
 }
 
-.contact-content .mr-sami {
-    text-decoration:underline;
-    color: var(--light-blue);
-}
-
-.links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.fa {
-    margin-top: 4rem;
-    padding: 20px;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  /* Add a hover effect if you want */
-  .fa:hover {
-    opacity: 0.7;
-  }
-  
-  /* Set a specific color for each brand */
-  
-  /* Facebook */
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  }
-  
-  /* Twitter */
-  .fa-instagram {
-    background: linear-gradient(45deg, #4C2C91, #9B51E0, #F10075, #F58529, #FCEAB6);
-    color: white;
-  }
-
-
-
-.contact-content h2{
-    font-size: 3.8rem;
+.contact-container h2 {
+    font-size: 1.5rem;
     font-weight: 600;
-    line-height: 5rem;
-    margin-bottom: 1rem;
-    font-family:sans-serif, 'Montserrat';
+    margin-bottom: 3rem;
+    font-family: var(--font);
     text-transform: uppercase;
     text-align: center;
 }
 
-.contact-content h2 span{
-    background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-9&color=4ef09d);
-    padding-right: 20px;
-    padding-left: 20px;
-    text-align: center;
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    background-color: transparent;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    background-color: var(--tr-blue);
+    outline-color: var(--light-blue);
+    border: 1px solid var(--dark-blue);
+    box-shadow: none;
+    padding: 15px;
+    color: white;
+    resize: none;
+}
+
+/* Select Dropdown Styles */
+select {
+    width: 100%;
+    padding: 15px 15px;
+    font-size: 13px;
+    border: 1px solid var(--dark-blue);
+    background-color: transparent;
+    color: #757575;
+    cursor: pointer;
+
+}
+
+/* Focus Styles */
+select:focus {
+    border-color: var(--light-blue);
+    background-color: var(--dark-blue);
+    outline: none;
+    color: white;
 }
 
 
-.contact-content p {
-    width: 80%;
+
+
+
+/* Button Styles */
+.contact-form button {
+    align-self: center;
+    padding: 15px 15px;
+    text-decoration: none;
     font-size: 1rem;
-    font-weight: 400;
-    line-height: 2rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    width: 120px;
+    background-color: transparent;
+    border: 1px solid var(--light-blue);
+    color: var(--light-blue);
+}
+
+.contact-form button:hover {
+    border: 1px solid transparent;
+    background-color: var(--light-blue);
+    color: #fff;
+}
+
+/* Focus Styles for Input and Textarea */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline-color: var(--light-blue);
+    outline-style: solid;
+    outline-width: 1px;
+    box-shadow: none;
+    border: none;
+}
+
+/* Success (Valid) Styles */
+.contact-form input:valid,
+.contact-form textarea:valid,
+.contact-form select:valid {
+    border: 1px solid var(--light-blue); /* Green border for valid input */
+    background-color: var(--dark-blue); /* Optional background color for valid input */
+}
+
+
+
+/* Error Message Styles */
+.contact-form .error {
+    color: var(--red);
+    font-size: 0.875rem;
+    display: none; /* Hide by default */
+    margin-top: 5px;
+}
+
+.after-request{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    gap: 15px;
+}
+
+.after-request h3{
+    color: var(--light-blue);
+}
+
+.after-request h4{
     text-align: center;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-
-
-@media (max-width: 1025px) {
-    .contact-container h2 {
-        font-size: 3rem;
-        line-height: 4rem;
-    }
-
-    .contact-container p {
-        font-size: 0.9rem;
-        line-height: 1.6rem;
-    } 
-
-}
-
-
+/* Mobile Styles */
 @media (max-width: 765px) {
-    .contact-container{
-        flex-direction: column;
-
-    }
-
-
-
-
     .contact-container h2 {
         margin-top: 3rem;
     }
 
-    .contact-content h2,
-    .contact-content p {
+    .contact-content h2 {
         width: auto;
         text-align: center;
     }
-
- 
-
 }
-
-@media (max-width: 600px) {
-    .contact-content h2 {
-
-        font-size: 2.2rem;
-        line-height: 3rem;
-        margin-top: 0;
-    }
-
-}
-
-
