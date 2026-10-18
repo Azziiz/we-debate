@@ -1,0 +1,134 @@
+.nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #04140bb3;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #1d4a3166;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.logo img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  transform: scale(1.4);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  font: 600 0.8rem var(--font-head);
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding: 0.3rem 0;
+}
+
+.menu-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--green);
+  transition: width 0.25s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.menu-item:hover::after,
+.menu-item.active::after {
+  width: 100%;
+}
+
+.nav-cta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.nav-profile:hover {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+@media (max-width: 960px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 16px 1.5rem;
+    background: #04140bf7;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid #1d4a3155;
+  }
+
+  .menu-item {
+    display: block;
+    padding: 0.9rem 0;
+    font-size: 0.95rem;
+  }
+
+  .menu-item::after {
+    display: none;
+  }
+
+  .nav-cta {
+    padding-top: 1rem;
+    border-bottom: none !important;
+  }
+}

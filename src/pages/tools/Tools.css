@@ -1,0 +1,172 @@
+/* ---------- timer ---------- */
+
+.timer-box {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  background: var(--surface);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.timer-box:fullscreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.timer-box:fullscreen .timer-clock {
+  font-size: min(32vw, 60vh);
+}
+
+.timer-phase {
+  font: 700 1rem var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.timer-clock {
+  font: 800 clamp(5rem, 22vw, 11rem) var(--font-head);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.timer-bar {
+  position: relative;
+  height: 10px;
+  max-width: 600px;
+  margin: 1.5rem auto;
+  background: #ffffff14;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.timer-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #ffffff1f;
+}
+
+.timer-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: currentColor;
+  opacity: 0.85;
+  transition: width 0.1s linear;
+}
+
+.timer-controls {
+  justify-content: center;
+}
+
+.phase-protected,
+.phase-open {
+  color: var(--text);
+}
+
+.phase-poi {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.phase-grace {
+  color: var(--warning);
+  border-color: var(--warning);
+  background: #3a2c0599;
+}
+
+.phase-over {
+  color: #fff;
+  border-color: var(--danger);
+  background: #5a0f18cc;
+}
+
+.timer-box .muted {
+  color: inherit;
+  opacity: 0.7;
+}
+
+/* ---------- motion generator ---------- */
+
+.motion-display {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.motion-text {
+  font: 700 clamp(1.3rem, 3.5vw, 2rem) var(--font-head);
+  max-width: 30ch;
+}
+
+.motion-display.spinning .motion-text {
+  opacity: 0.5;
+  filter: blur(1px);
+}
+
+/* ---------- team draw ---------- */
+
+.draw-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.draw-result {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+}
+
+.draw-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.draw-list li {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- score sheet ---------- */
+
+.score-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ranking {
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 760px) {
+  .draw-layout {
+    grid-template-columns: 1fr;
+  }
+}

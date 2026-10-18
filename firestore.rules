@@ -1,0 +1,90 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function role() {
+      return signedIn() && exists(userDoc()) ? get(userDoc()).data.role : 'none';
+    }
+
+    function isAdmin() {
+      return role() == 'admin';
+    }
+
+    function isMember() {
+      return role() in ['member', 'admin'];
+    }
+
+    function onlyChanges(keys) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys);
+    }
+
+    // Profiles. Readable by signed-in users (leaderboard). Users can edit their
+    // own name/bio/photo but never their role or points.
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'photoURL', 'bio', 'role', 'points', 'createdAt'])
+        && request.resource.data.role == 'guest'
+        && request.resource.data.points == 0;
+      allow update: if isAdmin()
+        || (signedIn() && request.auth.uid == uid && onlyChanges(['name', 'bio', 'photoURL']));
+      allow delete: if isAdmin();
+    }
+
+    // Membership applications, one per user (document id = uid).
+    match /applications/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.email == request.auth.token.email;
+      allow update, delete: if isAdmin();
+    }
+
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      // Document id = uid of the member who registered.
+      match /registrations/{uid} {
+        allow read: if isMember();
+        allow create: if isMember() && request.auth.uid == uid
+          && request.resource.data.attended == false;
+        allow delete: if (signedIn() && request.auth.uid == uid) || isAdmin();
+        allow update: if isAdmin();
+      }
+    }
+
+    // Approved motions are public. Members can suggest (unapproved) motions.
+    match /motions/{id} {
+      allow read: if resource.data.approved == true
+        || isAdmin()
+        || (signedIn() && resource.data.createdBy == request.auth.uid);
+      allow create: if isAdmin()
+        || (isMember()
+            && request.resource.data.approved == false
+            && request.resource.data.createdBy == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    // Points ledger. Only admins award points; members see their own history.
+    match /points/{id} {
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    match /scoresheets/{id} {
+      allow read: if isMember();
+      allow create: if isMember() && request.resource.data.createdBy == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+  }
+}
