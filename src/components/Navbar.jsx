@@ -19,7 +19,9 @@ function Navbar() {
   const { user, profile, isAdmin } = useAuth()
   const location = useLocation()
 
-  useEffect(() => setOpen(false), [location.pathname])
+  useEffect(() => {
+    setOpen(false)
+  }, [location.pathname])
 
   return (
     <header className="nav-wrapper">
